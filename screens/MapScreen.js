@@ -1,14 +1,15 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import MapView from 'react-native-maps';
+import { StyleSheet, View, Dimensions } from 'react-native';
 
-export default function MapScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      <View>
-        <Text style={styles.mapTitle}>Map</Text>
+export default class MapScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <MapView style={styles.mapStyle} />
       </View>
-    </ScrollView>
-  );
+    );
+  }
 }
 
 MapScreen.navigationOptions = {
@@ -18,11 +19,12 @@ MapScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  mapTitle: {
-    textAlign: 'center',
-    fontSize: 30,
-  }
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
 });
